@@ -24,9 +24,8 @@
 void diag_hg(struct bin *bin)
 {
     if (bin->event.type == sfEvtKeyPressed &&
-    (sfKeyboard_isKeyPressed(sfKeyUp) || sfKeyboard_isKeyPressed(sfKeyZ))
-    && (sfKeyboard_isKeyPressed(sfKeyLeft) || sfKeyboard_isKeyPressed(sfKeyQ))
-    && bin->border_bug == 0) {
+    (sfKeyboard_isKeyPressed(sfKeyUp))
+    && (sfKeyboard_isKeyPressed(sfKeyLeft))) {
         sfSprite_setRotation(bin->sunny, 45);
     }
 }
@@ -34,9 +33,8 @@ void diag_hg(struct bin *bin)
 void diag_hd(struct bin *bin)
 {
     if (bin->event.type == sfEvtKeyPressed &&
-    (sfKeyboard_isKeyPressed(sfKeyUp) || sfKeyboard_isKeyPressed(sfKeyZ))
-    && (sfKeyboard_isKeyPressed(sfKeyRight) || sfKeyboard_isKeyPressed(sfKeyD))
-    && bin->border_bug == 0) {
+    (sfKeyboard_isKeyPressed(sfKeyUp))
+    && (sfKeyboard_isKeyPressed(sfKeyRight))) {
         sfSprite_setRotation(bin->sunny, 125);
     }
 }
@@ -44,9 +42,8 @@ void diag_hd(struct bin *bin)
 void diag_bg(struct bin *bin)
 {
     if (bin->event.type == sfEvtKeyPressed &&
-    (sfKeyboard_isKeyPressed(sfKeyDown) || sfKeyboard_isKeyPressed(sfKeyS))
-    && (sfKeyboard_isKeyPressed(sfKeyLeft) || sfKeyboard_isKeyPressed(sfKeyQ))
-    && bin->border_bug == 0) {
+    (sfKeyboard_isKeyPressed(sfKeyDown))
+    && (sfKeyboard_isKeyPressed(sfKeyLeft))) {
         sfSprite_setRotation(bin->sunny, -45);
     }
 }
@@ -54,9 +51,8 @@ void diag_bg(struct bin *bin)
 void diag_bd(struct bin *bin)
 {
     if (bin->event.type == sfEvtKeyPressed &&
-    (sfKeyboard_isKeyPressed(sfKeyDown) || sfKeyboard_isKeyPressed(sfKeyS))
-    && (sfKeyboard_isKeyPressed(sfKeyRight) || sfKeyboard_isKeyPressed(sfKeyD))
-    && bin->border_bug == 0) {
+    (sfKeyboard_isKeyPressed(sfKeyDown))
+    && (sfKeyboard_isKeyPressed(sfKeyRight))) {
         sfSprite_setRotation(bin->sunny, 45);
     }
 }

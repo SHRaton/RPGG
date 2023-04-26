@@ -27,11 +27,10 @@ void ia_akainumarine(struct bin *bin)
     clock_deplacements_crocomarine(bin);
     if (bin->mort == 1 && bin->deplacements.x >= bin->pos_crocodile.x - 100 &&
     bin->deplacements.x <= bin->pos_crocodile.x - 80) {
-        bin->avancement = 4; bin->rect_vie.width = 457;
+        bin->rect_vie.width = 457;
         bin->inventaire = bin->inventaire4_c;
         bin->nb_ile = 4;
-        bin->ocean = bin->ocean4_c;
-        bin->carte = bin->map4_c; bin->rect_mana.width = 457;
+        bin->rect_mana.width = 457;
         sfSprite_setScale(bin->ocean, (sfVector2f){0.5, 0.5});
         sfSprite_setPosition(bin->ocean, bin->pos_ocean);
         sfRenderWindow_close(bin->Boss);
@@ -64,7 +63,6 @@ void init_marine(struct bin *bin)
     bin->deplacements.x = 200; bin->deplacements.y = 500;
     bin->moove_crocodile = sfClock_create();
     bin->clock_auto_croco = sfClock_create();
-    bin->pick = 2;
     srand(time(NULL));
     bin->pos_boule.x = (rand() % 1000);
     bin->pos_boule2.x = (rand() % 1000);
@@ -77,12 +75,10 @@ int boss_marine(struct bin *bin)
     sfClock *mana = sfClock_create();
     bin->Boss = sfRenderWindow_create(bin->video_mode, "BOSS",
     sfClose | sfResize, NULL);
-    bin->avancement = 1;
     bin->quete = 7;
+    bin->avancement = 3;
     sfRenderWindow_setFramerateLimit(bin->Boss, bin->fps);
     while (sfRenderWindow_isOpen(bin->Boss)) {
-        if (bin->exit == 69)
-            return (69);
         while (sfRenderWindow_pollEvent(bin->Boss, &bin->event)) {
             fermer_bossmarine(bin);
         }

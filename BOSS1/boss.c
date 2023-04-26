@@ -24,8 +24,7 @@
 int fermer_boss(struct bin *bin)
 {
     if (bin->event.type == sfEvtClosed) {
-        sfRenderWindow_close(bin->Boss);
-        bin->exit = 69;
+        exit (0);
     }
     tab2(bin);
     inventory(bin);
@@ -45,8 +44,8 @@ void affichages_ile_boss2(struct bin *bin)
     sfRenderWindow_drawSprite(bin->Boss, bin->crocodile, NULL);
     sfRenderWindow_drawSprite(bin->Boss, bin->vie_crocodile, NULL);
     if (bin->mort == 1) {
-        sfSprite_setPosition(bin->berry, bin->pos_crocodile);
-        sfRenderWindow_drawSprite(bin->Boss, bin->berry, NULL);
+        sfSprite_setPosition(bin->drop_croco, bin->pos_crocodile);
+        sfRenderWindow_drawSprite(bin->Boss, bin->drop_croco, NULL);
     }
     sfRenderWindow_drawSprite(bin->Boss, bin->perso, NULL);
     sfSprite_setTextureRect(bin->vie_crocodile, bin->rect_vie_crocodile);
@@ -82,7 +81,7 @@ int animation_course_boss(struct bin *bin, sfClock *clock, sfClock *gum)
     bin->elipse += sfTime_asSeconds(sfClock_restart(gum));
     if (bin->elipse > bin->gumgum) {
         bin->elipse -= bin->gumgum;
-        if (sfKeyboard_isKeyPressed(sfKeyR) || bin->gome == 1) {
+        if ((sfKeyboard_isKeyPressed(sfKeyR) && bin->press_r == 1)|| bin->gome == 1) {
             bin->frameRectspell.left += 100;
         }
         if (bin->frameRectspell.left >= 1200) {

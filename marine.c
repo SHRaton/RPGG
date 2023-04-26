@@ -24,9 +24,7 @@
 int fermer_ilemarine(struct bin *bin)
 {
     if (bin->event.type == sfEvtClosed) {
-        sfRenderWindow_close(bin->ILE1);
-        sfRenderWindow_close(bin->Window);
-        bin->exit = 69;
+        exit (0);
     }
     tab2(bin);
     inventory(bin);
@@ -61,7 +59,7 @@ void autoattackmarine(struct bin *bin)
 void spell_1marine(struct bin *bin)
 {
     if ((sfKeyboard_isKeyPressed(sfKeyR) || bin->gome == 1 ) &&
-    (bin->rect_mana.width >= 100)) {
+    (bin->rect_mana.width >= 100) && bin->press_r == 1) {
         bin->gome = 1;
         if (bin->pick == 1) {
             bin->perso = bin->spell_c;
@@ -109,7 +107,7 @@ void affichages_ilemarine(struct bin *bin, sfClock *clock, sfClock *gum)
 
 int ilemarine(struct bin *bin)
 {
-    bin->ile = bin->fightskypea_c; bin->decor.x = 0; bin->decor.y = 0;
+    bin->ile = bin->fight_marine_c; bin->decor.x = 0; bin->decor.y = 0;
     bin->deplacements.x = 200; bin->deplacements.y = 500;
     sfClock *clock = sfClock_create(); sfClock *gum = sfClock_create();
     sfClock *mana = sfClock_create();
@@ -117,9 +115,6 @@ int ilemarine(struct bin *bin)
     sfClose | sfResize, NULL);
     sfRenderWindow_setFramerateLimit(bin->ILE1, bin->fps);
     while (sfRenderWindow_isOpen(bin->ILE1)) {
-        if (bin->exit == 69) {
-            return (69);
-        }
         while (sfRenderWindow_pollEvent(bin->ILE1, &bin->event)) {
             fermer_ilemarine(bin);
         }bin->mouse = sfMouse_getPosition((const sfWindow *)bin->ILE1);

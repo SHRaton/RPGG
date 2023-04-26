@@ -278,8 +278,38 @@
         sfSprite *luffy_pose;
         sfSprite *zoro_pose;
         sfSprite *sanji_pose;
+        sfSprite *drop_croco;
+        sfSprite *drop_enel;
+        sfSprite *drop_akainu;
+        sfSprite *akainu_mort;
+        sfSprite *marineford;
+        sfSprite *fight_marine_c;
+        int press_r;
+
+        int dialogue_ace2;
+        int dialogue_ace3;
+        int dialogue_ace4;
+        sfSprite *d_ace2;
+        sfSprite *d_ace3;
+        sfSprite *d_ace4;
+        sfSprite *loading;
+
+        int coffre1;
+        int coffre2;
+        int coffre3;
+        int coffre4;
+        int coffre5;
+
+        sfSprite *coffre_berry;
     };
 
+    int recup_log(struct bin *bin);
+    int recup_perso(struct bin *bin);
+
+    void coffre_dialogue(struct bin *bin);
+    void ace2(struct bin *bin);
+    void ace3(struct bin *bin);
+    void ace4(struct bin *bin);
     void quetes(struct bin *bin, sfRenderWindow *Window);
     void applycrash(struct bin *bin);
     void applycrash2(struct bin *bin);

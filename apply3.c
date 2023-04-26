@@ -53,6 +53,9 @@ void applycrash(struct bin *bin)
     bin->luffy_right = cat("img/luffy_right.png");
     bin->sanjigauche = cat("img/sanjigauche.png");
     bin->sanjiright = cat("img/sanjiright.png");
+    bin->drop_croco = cat("img/drop_croco.png");
+    bin->drop_enel = cat("img/drop_enel.png");
+    bin->drop_akainu = cat("img/drop_akainu.png");
 }
 
 void applycrash2(struct bin *bin)
@@ -105,6 +108,7 @@ void applycrash3(struct bin *bin)
     bin->luffy_pose = cat("img/luffy_pose.png");
     bin->zoro_pose = cat("img/zoro_pose.png");
     bin->sanji_pose = cat("img/sanji_pose.png");
+    bin->loading = cat("img/loading.jpg");
 }
 
 void applycrash4(struct bin *bin)
@@ -119,11 +123,19 @@ void applycrash4(struct bin *bin)
     bin->wukong_droitenrv_c = cat("img/wukong_droitenrv.png");
     bin->map3_c = cat("img/map3.png");
     bin->ocean3_c = cat("img/ocean3.png");
-    bin->ocean4_c = cat("img/ocean4.png");
+    bin->akainu_mort = cat("img/akainu_mort.png");
+    bin->marineford = cat("img/marineford.png");
+    bin->fight_marine_c = cat("img/fightmarine.png");
+    bin->press_r = 0;
     bin->d_croco = 0;
     bin->d_enel = 0;
     bin->d_akainu = 0;
-    bin->map4_c = cat("img/map4.png");
+    bin->dialogue_ace2 = 0;
+    bin->dialogue_ace3 = 0;
+    bin->dialogue_ace4 = 0;
+    bin->d_ace2 = cat("img/ace2.png");
+    bin->d_ace3 = cat("img/ace3.png");
+    bin->d_ace4 = cat("img/ace4.png");
     bin->echec = cat("img/deadimage.png");
     bin->Quete1 = cat("img/Quete1.png");
     bin->Quete2 = cat("img/Quete2.png");
@@ -149,4 +161,10 @@ void applycrash4(struct bin *bin)
     bin->pos_feu.x = 400; bin->pos_feu.y = 300;
     bin->rect_feu.left = 0; bin->rect_feu.top = 0;
     bin->rect_feu.width = 210; bin->rect_feu.height = 100;
+    bin->coffre1 = 0;
+    bin->coffre2 = 0;
+    bin->coffre3 = 0;
+    bin->coffre4 = 0;
+    bin->coffre5 = 0;
+    bin->coffre_berry = cat("img/coffre_berry.png");
 }

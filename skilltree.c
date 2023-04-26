@@ -75,6 +75,7 @@ int press_tttt(struct bin *bin, sfRenderWindow *Window)
             rouge.r = 255; rouge.g = 0; rouge.b = 70; rouge.a = 255;
             sfText_setFillColor(bin->text_special, rouge);
             bin->compteur_special = "X";
+            bin->press_r = 1;
         }
         bin->skill_tree = bin->skilltree4_c;
     }

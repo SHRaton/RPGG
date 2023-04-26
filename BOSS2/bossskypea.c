@@ -24,8 +24,7 @@
 int fermer_bossskypea(struct bin *bin)
 {
     if (bin->event.type == sfEvtClosed) {
-        sfRenderWindow_close(bin->Boss);
-        bin->exit = 69;
+        exit (0);
     }
     tab2(bin);
     inventory(bin);
@@ -43,8 +42,8 @@ void affichages_ile_boss2skypea(struct bin *bin)
     sfSprite_setPosition(bin->vie_crocodile, bin->pos_crocodile);
     sfRenderWindow_drawSprite(bin->Boss, bin->crocodile, NULL);
     sfRenderWindow_drawSprite(bin->Boss, bin->vie_crocodile, NULL);
-    if (bin->mort == 1) { sfSprite_setPosition(bin->berry, bin->pos_crocodile);
-        sfRenderWindow_drawSprite(bin->Boss, bin->berry, NULL);
+    if (bin->mort == 1) { sfSprite_setPosition(bin->drop_enel, bin->pos_crocodile);
+        sfRenderWindow_drawSprite(bin->Boss, bin->drop_enel, NULL);
     }sfRenderWindow_drawSprite(bin->Boss, bin->perso, NULL);
     sfSprite_setTextureRect(bin->vie_crocodile, bin->rect_vie_crocodile);
     sfSprite_setTextureRect(bin->vie, bin->rect_vie);
@@ -86,7 +85,7 @@ int animation_course_bossskypea(struct bin *bin, sfClock *clock, sfClock *gum)
     bin->elipse += sfTime_asSeconds(sfClock_restart(gum));
     if (bin->elipse > bin->gumgum) {
         bin->elipse -= bin->gumgum;
-        if (sfKeyboard_isKeyPressed(sfKeyR) || bin->gome == 1) {
+        if ((sfKeyboard_isKeyPressed(sfKeyR) && bin->press_r == 1)|| bin->gome == 1) {
             bin->frameRectspell.left += 100;
         }
         if (bin->frameRectspell.left >= 1200) {

@@ -44,6 +44,76 @@ void coffre(struct bin *bin)
     sfSprite_setScale(bin->ocean, (sfVector2f){0.5, 0.5});
 }
 
+void coffre_dialogue(struct bin *bin)
+{
+    int i = 0;
+    while (i < 1) {
+        if (sfKeyboard_isKeyPressed(sfKeyEnter)) {
+            i += 1;
+        }
+        sfRenderWindow_drawSprite(bin->island, bin->map_ile, NULL);
+        sfRenderWindow_drawSprite(bin->island, bin->chopper, NULL);
+        sfRenderWindow_drawSprite(bin->island, bin->luffy, NULL);
+        sfRenderWindow_drawSprite(bin->island, bin->coffre_berry, NULL);
+        sfRenderWindow_drawSprite(bin->island, bin->map_dessous, NULL);
+        sfRenderWindow_display(bin->island);
+    }
+}
+
+void ace2(struct bin *bin)
+{
+    bin->evenement = 1;
+    while (bin->dialogue_ace2 < 1) {
+        sfRenderWindow_pollEvent(bin->Window, &bin->event);
+        if (bin->event.type == sfEvtKeyPressed &&
+        sfKeyboard_isKeyPressed(sfKeyEnter)) {
+            bin->quete = 2;
+            bin->dialogue_ace2 += 1;
+        }
+        sfRenderWindow_drawSprite(bin->Window, bin->ocean, NULL);
+        sfRenderWindow_drawSprite(bin->Window, bin->sunny, NULL);
+        sfRenderWindow_drawSprite(bin->Window, bin->d_ace2, NULL);
+        sfRenderWindow_display(bin->Window);
+    }
+    bin->evenement = 0;
+}
+
+void ace3(struct bin *bin)
+{
+    bin->evenement = 1;
+    while (bin->dialogue_ace3 < 1) {
+        sfRenderWindow_pollEvent(bin->Window, &bin->event);
+        if (bin->event.type == sfEvtKeyPressed &&
+        sfKeyboard_isKeyPressed(sfKeyEnter)) {
+            bin->quete = 2;
+            bin->dialogue_ace3 += 1;
+        }
+        sfRenderWindow_drawSprite(bin->Window, bin->ocean, NULL);
+        sfRenderWindow_drawSprite(bin->Window, bin->sunny, NULL);
+        sfRenderWindow_drawSprite(bin->Window, bin->d_ace3, NULL);
+        sfRenderWindow_display(bin->Window);
+    }
+    bin->evenement = 0;
+}
+
+void ace4(struct bin *bin)
+{
+    bin->evenement = 1;
+    while (bin->dialogue_ace4 < 1) {
+        sfRenderWindow_pollEvent(bin->Window, &bin->event);
+        if (bin->event.type == sfEvtKeyPressed &&
+        sfKeyboard_isKeyPressed(sfKeyEnter)) {
+            bin->quete = 2;
+            bin->dialogue_ace4 += 1;
+        }
+        sfRenderWindow_drawSprite(bin->Window, bin->ocean, NULL);
+        sfRenderWindow_drawSprite(bin->Window, bin->sunny, NULL);
+        sfRenderWindow_drawSprite(bin->Window, bin->d_ace4, NULL);
+        sfRenderWindow_display(bin->Window);
+    }
+    bin->evenement = 0;
+}
+
 int dialogue_chopper(struct bin *bin)
 {
     bin->evenement = 1;

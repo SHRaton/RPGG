@@ -24,16 +24,12 @@
 void fermer_cinematique(struct bin *bin)
 {
     if (bin->event.type == sfEvtClosed) {
-        sfRenderWindow_close(bin->Cinematique);
-        sfRenderWindow_close(bin->island);
-        sfRenderWindow_close(bin->ILE1);
-        sfRenderWindow_close(bin->Boss);
+        exit(0);
     }
 }
 
 int cinematique(struct bin *bin)
 {
-    bin->pick = 1;
     sfClock *clock = sfClock_create();
     sfClock *clock_zoom = sfClock_create();
     sfSprite *perso;
@@ -85,7 +81,8 @@ int cinematique(struct bin *bin)
             }
             sfClock_restart(clock_zoom);
         }
-        if (sfTime_asSeconds(sfClock_getElapsedTime(clock)) > 52) {
+        if (sfTime_asSeconds(sfClock_getElapsedTime(clock)) > 53) {
+            sfSprite_setScale(bin->winimage, (sfVector2f) {1, 1});
             sfRenderWindow_drawSprite(bin->Cinematique, bin->winimage, NULL);
             bin->mouse = sfMouse_getPosition((const sfWindow *)bin->Cinematique);
             if (bin->event.type == sfEvtMouseButtonPressed &&
@@ -95,8 +92,12 @@ int cinematique(struct bin *bin)
                 bin->rect_vie.width = 457; bin->rect_mana.width = 457;
                 bin->pos_crocodile.x = 1300; bin->deplacements.x = 200;
                 bin->rect_vie_crocodile.width = 457;
-                sfRenderWindow_close(bin->Cinematique);
+                bin->winimage = bin->loading;
+                sfSprite_setScale(bin->winimage, (sfVector2f) {0.5, 0.5});
+                sfRenderWindow_drawSprite(bin->Cinematique, bin->winimage, NULL);
+                sfRenderWindow_display(bin->Cinematique);
                 apply(bin);
+                sfRenderWindow_close(bin->Cinematique);
                 if (menu_funtion(bin) == 69) {
                     return (0);
                 }

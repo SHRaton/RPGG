@@ -54,7 +54,7 @@ void auto_attack_finished(struct bin *bin)
         bin->rect_vie_crocodile.width -= 20 + (bin->stat_force / 2);
     }
     if (bin->in_range == 1 && bin->mort == 0 && bin->poing == 1 && bin->nb_ile == 3) {
-        bin->rect_vie_crocodile.width -= 10 + (bin->stat_force / 2);
+        bin->rect_vie_crocodile.width -= 7 + (bin->stat_force / 10);
     }
     if (bin->rect_mana.width > 50) {
         bin->rect_mana.width -= 50 - (bin->stat_mana / 2);
@@ -102,7 +102,7 @@ int animation_course(struct bin *bin, sfClock *clock, sfClock *gum)
     bin->elipse += sfTime_asSeconds(sfClock_restart(gum));
     if (bin->elipse > bin->gumgum) {
         bin->elipse -= bin->gumgum;
-        if (sfKeyboard_isKeyPressed(sfKeyR) || bin->gome == 1) {
+        if ((sfKeyboard_isKeyPressed(sfKeyR) && bin->press_r == 1)|| bin->gome == 1) {
             bin->frameRectspell.left += 100;
         }
         if (bin->frameRectspell.left >= 1200) {

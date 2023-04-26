@@ -24,9 +24,7 @@
 int fermer_ileskypea(struct bin *bin)
 {
     if (bin->event.type == sfEvtClosed) {
-        sfRenderWindow_close(bin->ILE1);
-        sfRenderWindow_close(bin->Window);
-        bin->exit = 69;
+        exit (0);
     }
     tab2(bin);
     inventory(bin);
@@ -60,8 +58,8 @@ void autoattackskypea(struct bin *bin)
 
 void spell_1skypea(struct bin *bin)
 {
-    if ((sfKeyboard_isKeyPressed(sfKeyR) || bin->gome == 1 ) &&
-    (bin->rect_mana.width >= 100)) {
+    if ((sfKeyboard_isKeyPressed(sfKeyR) || bin->gome == 1) &&
+    (bin->rect_mana.width >= 100) && bin->press_r == 1) {
         bin->gome = 1;
         if (bin->pick == 1) {
             bin->perso = bin->spell_c;
@@ -117,9 +115,6 @@ int ileskypea(struct bin *bin)
     sfClose | sfResize, NULL);
     sfRenderWindow_setFramerateLimit(bin->ILE1, bin->fps);
     while (sfRenderWindow_isOpen(bin->ILE1)) {
-        if (bin->exit == 69) {
-            return (69);
-        }
         while (sfRenderWindow_pollEvent(bin->ILE1, &bin->event)) {
             fermer_ileskypea(bin);
         }bin->mouse = sfMouse_getPosition((const sfWindow *)bin->ILE1);

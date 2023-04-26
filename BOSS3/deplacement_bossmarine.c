@@ -90,7 +90,7 @@ void autoattack_bossmarine(struct bin *bin)
 void spell_1_bossmarine(struct bin *bin)
 {
     if ((sfKeyboard_isKeyPressed(sfKeyR) || bin->gome == 1) &&
-    (bin->rect_mana.width >= 100)) {
+    (bin->rect_mana.width >= 100) && bin->press_r == 1) {
         bin->gome = 1;
         if (bin->pick == 1) {
             bin->perso = bin->spell_c;

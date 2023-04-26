@@ -24,9 +24,7 @@
 int fermer_ile1(struct bin *bin)
 {
     if (bin->event.type == sfEvtClosed) {
-        sfRenderWindow_close(bin->ILE1);
-        sfRenderWindow_close(bin->island);
-        sfRenderWindow_close(bin->Window);
+        exit(0);
     }
     tab2(bin);
     inventory(bin);
@@ -37,8 +35,7 @@ int fermer_ile1(struct bin *bin)
 int fermer_ile(struct bin *bin)
 {
     if (bin->event.type == sfEvtClosed) {
-        sfRenderWindow_close(bin->island);
-        sfRenderWindow_close(bin->Window);
+        exit(0);
     }
     interractions_ile1(bin);
     tab2(bin);
@@ -80,8 +77,6 @@ int ilealabasta(struct bin *bin)
     bin->quete = 3;
     sfClock *clock_d = sfClock_create(); init(bin);
     while (sfRenderWindow_isOpen(bin->island)) {
-        if (bin->exit == 69)
-            return (69);
         while (sfRenderWindow_pollEvent(bin->island, &bin->event)) {
             fermer_ile(bin);
         }collisions(bin);
@@ -89,6 +84,51 @@ int ilealabasta(struct bin *bin)
         if (bin->evenement == 0) {
             animation_course_ile(bin); droite_ile(bin); gauche_ile(bin);
             bas_ile(bin); haut_ile(bin); no_moovealabasta(bin);
+        }
+        if (bin->deplacements_ile.x < -5430 && bin->deplacements_ile.x > -5640 &&
+        bin->deplacements_ile.y < -560 && bin->deplacements_ile.y > -670 && bin->coffre1 == 0) {
+            if (sfKeyboard_isKeyPressed(sfKeyF)) {
+                bin->nb_berry += 10;
+                inttostr(bin->nb_berry, bin->compteur_berry);
+                bin->coffre1 = 1;
+                coffre_dialogue(bin);
+            }
+        }
+        if (bin->deplacements_ile.x < -4070 && bin->deplacements_ile.x > -4280 &&
+        bin->deplacements_ile.y < -2220 && bin->deplacements_ile.y > -2330 && bin->coffre2 == 0) {
+            if (sfKeyboard_isKeyPressed(sfKeyF)) {
+                bin->nb_berry += 10;
+                inttostr(bin->nb_berry, bin->compteur_berry);
+                bin->coffre2 = 1;
+                coffre_dialogue(bin);
+            }
+        }
+        if (bin->deplacements_ile.x < -550 && bin->deplacements_ile.x > -760 &&
+        bin->deplacements_ile.y < -3120 && bin->deplacements_ile.y > -3230 && bin->coffre3 == 0) {
+            if (sfKeyboard_isKeyPressed(sfKeyF)) {
+                bin->nb_berry += 10;
+                inttostr(bin->nb_berry, bin->compteur_berry);
+                bin->coffre3 = 1;
+                coffre_dialogue(bin);
+            }
+        }
+        if (bin->deplacements_ile.x < -5110 && bin->deplacements_ile.x > -5320 &&
+        bin->deplacements_ile.y < -5600 && bin->deplacements_ile.y > -5710 && bin->coffre4 == 0) {
+            if (sfKeyboard_isKeyPressed(sfKeyF)) {
+                bin->nb_berry += 10;
+                inttostr(bin->nb_berry, bin->compteur_berry);
+                bin->coffre4 = 1;
+                coffre_dialogue(bin);
+            }
+        }
+        if (bin->deplacements_ile.x < -5990 && bin->deplacements_ile.x > -6200 &&
+        bin->deplacements_ile.y < -3820 && bin->deplacements_ile.y > -3930 && bin->coffre5 == 0) {
+            if (sfKeyboard_isKeyPressed(sfKeyF)) {
+                bin->nb_berry += 10;
+                inttostr(bin->nb_berry, bin->compteur_berry);
+                bin->coffre5 = 1;
+                coffre_dialogue(bin);
+            }
         }
         clock_chopper(bin, clock_d);
         draw_all(bin); hud(*bin, bin->island); draw_other(bin);
@@ -106,9 +146,7 @@ int ile1(struct bin *bin)
     sfClose | sfResize, NULL);
     sfRenderWindow_setFramerateLimit(bin->ILE1, bin->fps);
     while (sfRenderWindow_isOpen(bin->ILE1)) {
-        if (bin->exit == 69) {
-            return (69);
-        }
+
         while (sfRenderWindow_pollEvent(bin->ILE1, &bin->event)) {
             fermer_ile1(bin);
         }bin->mouse = sfMouse_getPosition((const sfWindow *)bin->ILE1);

@@ -24,8 +24,7 @@
 int droite(struct bin *bin)
 {
     if (bin->event.type == sfEvtKeyPressed &&
-    sfKeyboard_isKeyPressed(sfKeyRight) ||
-    sfKeyboard_isKeyPressed(sfKeyD)) {
+    sfKeyboard_isKeyPressed(sfKeyRight)) {
         sfSprite_setRotation(bin->sunny, 0);
         bin->reverse.x = -1;
         sfSprite_setScale(bin->sunny, bin->reverse);
@@ -40,8 +39,7 @@ int droite(struct bin *bin)
 int gauche(struct bin *bin)
 {
     if (bin->event.type == sfEvtKeyPressed &&
-    sfKeyboard_isKeyPressed(sfKeyLeft) ||
-    sfKeyboard_isKeyPressed(sfKeyQ)) {
+    sfKeyboard_isKeyPressed(sfKeyLeft)) {
         sfSprite_setRotation(bin->sunny, 0);
         bin->reverse.x = 1;
         sfSprite_setScale(bin->sunny, bin->reverse);
@@ -56,8 +54,7 @@ int gauche(struct bin *bin)
 int haut(struct bin *bin)
 {
     if (bin->event.type == sfEvtKeyPressed &&
-    sfKeyboard_isKeyPressed(sfKeyUp) ||
-    sfKeyboard_isKeyPressed(sfKeyZ)) {
+    sfKeyboard_isKeyPressed(sfKeyUp)) {
         sfSprite_setRotation(bin->sunny, 90);
         bin->reverse.x = 1;
         sfSprite_setScale(bin->sunny, bin->reverse);
@@ -72,7 +69,7 @@ int haut(struct bin *bin)
 int bas(struct bin *bin)
 {
     if (bin->event.type == sfEvtKeyPressed &&
-    (sfKeyboard_isKeyPressed(sfKeyDown) || sfKeyboard_isKeyPressed(sfKeyS))) {
+    (sfKeyboard_isKeyPressed(sfKeyDown))) {
         sfSprite_setRotation(bin->sunny, 270);
         bin->reverse.x = 1;
         sfSprite_setScale(bin->sunny, bin->reverse);
@@ -88,19 +85,19 @@ int iles(struct bin *bin)
 {
     if (bin->coo_x <= 0 && bin->coo_x >= -920 &&
     bin->coo_y <= -1420 && bin->coo_y >= -1940 && bin->nb_ile == 1) {
-        bin->pos_ocean.x = -2100;
+        bin->pos_ocean.x = -2000;
         bin->pos_ocean.y = -3900;
         sfSprite_setPosition(bin->ocean, bin->pos_ocean);
         ilealabasta(bin);
     }if (bin->coo_x <= -1580 && bin->coo_x >= -2520 &&
     bin->coo_y <= -2780 && bin->coo_y >= -3220 && bin->nb_ile == 2) {
-        bin->pos_ocean.x = -1500;
+        bin->pos_ocean.x = -2000;
         bin->pos_ocean.y = -3900;
         sfSprite_setPosition(bin->ocean, bin->pos_ocean);
         ileskypea(bin);
     }if (bin->coo_x <= -2540 && bin->coo_x >= -3080 &&
     bin->coo_y <= -1020 && bin->coo_y >= -1680 && bin->nb_ile == 3) {
-        bin->pos_ocean.x = -1500;
+        bin->pos_ocean.x = -2000;
         bin->pos_ocean.y = -3900;
         sfSprite_setPosition(bin->ocean, bin->pos_ocean);
         ilemarine(bin);

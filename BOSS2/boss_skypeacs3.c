@@ -86,18 +86,20 @@ void lance_boule(struct bin *bin)
 {
     if ((bin->pos_boule.x > bin->deplacements.x - 100 &&
     bin->pos_boule.x < bin->deplacements.x + 100 &&
-    bin->pos_boule.y > bin->deplacements.y - 170 &&
-    bin->pos_boule.y < bin->deplacements.y + 170) ||
+    bin->pos_boule.y > bin->deplacements.y - 100 &&
+    bin->pos_boule.y < bin->deplacements.y + 120) ||
     (bin->pos_boule2.x > bin->deplacements.x - 100 &&
     bin->pos_boule2.x < bin->deplacements.x + 100 &&
-    bin->pos_boule2.y > bin->deplacements.y - 170 &&
-    bin->pos_boule2.y < bin->deplacements.y + 170)) {
+    bin->pos_boule2.y > bin->deplacements.y - 70 &&
+    bin->pos_boule2.y < bin->deplacements.y + 70)) {
         bin->rect_vie.width -= 40;
         bin->nb_attack = 0;
+        bin->pos_boule.x = 1300;
+        bin->pos_boule2.y = 0;
     }
     bin->pos_crocodile.x = 1500; bin->pos_crocodile.y = 320;
-    bin->pos_boule.x -= 10; bin->pos_boule.y += 2;
-    bin->pos_boule2.x -= 2; bin->pos_boule2.y += 10;
+    bin->pos_boule.x -= 10; bin->pos_boule.y -= 2;
+    bin->pos_boule2.y += 10;
     lance_boule2(bin);
     clock_anim_boule(bin);
 }

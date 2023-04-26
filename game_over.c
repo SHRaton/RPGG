@@ -24,7 +24,7 @@
 void fermer_gameover(struct bin *bin)
 {
     if (bin->event.type == sfEvtClosed) {
-        sfRenderWindow_close(bin->gameover);
+        exit(0);
     }
 }
 

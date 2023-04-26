@@ -24,15 +24,14 @@
 int fermer(struct bin *bin)
 {
     if (bin->event.type == sfEvtClosed) {
-        sfRenderWindow_close(bin->Window);
+        exit(0);
     }
 }
 
 int fermer_start(struct bin *bin)
 {
     if (bin->event.type == sfEvtClosed) {
-        sfRenderWindow_close(bin->Start);
-        bin->exit = 69;
+        exit (0);
     }
 }
 
@@ -89,9 +88,6 @@ int start_funtion(struct bin *bin)
     sfClose | sfResize, NULL);
     bin->mouse = sfMouse_getPosition((const sfWindow *)bin->Start);
     while (sfRenderWindow_isOpen(bin->Start)) {
-        if (bin->exit == 69) {
-            return (69);
-        }
         while (sfRenderWindow_pollEvent(bin->Start, &bin->event)) {
             fermer_start(bin);
         }
@@ -102,12 +98,96 @@ int start_funtion(struct bin *bin)
     sfRenderWindow_destroy(bin->Start);
 }
 
+int recup_log(struct bin *bin)
+{
+    int fd = open("log.txt", O_RDONLY);
+    if (fd == -1) {
+        printf("Erreur lors de l'ouverture du fichier.\n");
+        exit(EXIT_FAILURE);
+    }
+    char buffer[10000];
+    ssize_t nb_lus = read(fd, buffer, sizeof(buffer) - 1);
+    if (nb_lus == -1) {
+        printf("Erreur lors de la lecture du fichier.\n");
+        close(fd);
+        exit(EXIT_FAILURE);
+    }
+    buffer[nb_lus] = '\0';
+    close(fd);
+    if (buffer[0] == '0') {
+        return (0);
+    }
+    if (buffer[0] == '1') {
+        return (1);
+    }
+    if (buffer[0] == '2') {
+        return (2);
+    }
+    if (buffer[0] == '3') {
+        return (3);
+    }
+    return (0);
+}
+
+int recup_perso(struct bin *bin)
+{
+    int fd = open("perso.txt", O_RDONLY);
+    if (fd == -1) {
+        printf("Erreur lors de l'ouverture du fichier.\n");
+        exit(EXIT_FAILURE);
+    }
+    char buffer[10000];
+    ssize_t nb_lus = read(fd, buffer, sizeof(buffer) - 1);
+    if (nb_lus == -1) {
+        printf("Erreur lors de la lecture du fichier.\n");
+        close(fd);
+        exit(EXIT_FAILURE);
+    }
+    buffer[nb_lus] = '\0';
+    close(fd);
+    if (buffer[0] == '1') {
+        return (1);
+    }
+    if (buffer[0] == '2') {
+        return (2);
+    }
+    if (buffer[0] == '3') {
+        return (3);
+    }
+    return (1);
+}
+
+void my_putstr(char const *str)
+{
+    int i = 0;
+    while (str[i] != '\0') {
+        write(1, &str[i], 1); i++;
+    }
+}
+
+int my_strcmp(char const *s1, char const *s2)
+{
+    int i = 0;
+    while (s1[i] != 0 && s2[i] != 0) {
+        if (s1[i] != s2[i]) {
+            return (s1[i] - s2[i]);
+        }
+        i++;
+    }
+    return (0);
+}
+
 int main(int ac, char **av)
 {
+    if (ac == 2 && my_strcmp(av[1], "-h") == 0) {
+        my_putstr("Attaque : E/R\nDéplacement personnage : Q/D");
+        my_putstr("\nDéplacement bateau : Flèches directionnelles");
+        my_putstr("\nIntéragir : F\nPause : Echap\nSkill Tree : T");
+        my_putstr("\nInventaire : I\nSkip dialogue : Enter\nMap : Tab\n");
+        return (0);
+    }
     struct bin bin;
     apply(&bin);
-    //boss_marine(&bin);
-    //exit (0);
     if (menu_funtion(&bin) == 69) {
         return (0);
     }

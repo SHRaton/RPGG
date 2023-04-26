@@ -75,7 +75,7 @@ void ia_croco(struct bin *bin)
     clock_deplacements_croco(bin);
     if (bin->mort == 1 && bin->deplacements.x >= bin->pos_crocodile.x - 100 &&
     bin->deplacements.x <= bin->pos_crocodile.x - 80) {
-        bin->avancement = 2; bin->rect_vie.width = 457;
+        bin->rect_vie.width = 457;
         bin->inventaire = bin->inventaire2_c;
         bin->carte = bin->map2_c; bin->rect_mana.width = 457;
         bin->ocean = bin->ocean2_c;
@@ -110,15 +110,11 @@ int boss_function(struct bin *bin)
     bin->moove_crocodile = sfClock_create();
     bin->clock_auto_croco = sfClock_create();
     bin->quete = 5;
-    sfRenderWindow_close(bin->ILE1); sfRenderWindow_close(bin->island);
-    sfRenderWindow_close(bin->Window);
     bin->Boss = sfRenderWindow_create(bin->video_mode, "BOSS",
     sfClose | sfResize, NULL);
     bin->avancement = 1;
     sfRenderWindow_setFramerateLimit(bin->Boss, bin->fps);
     while (sfRenderWindow_isOpen(bin->Boss)) {
-        if (bin->exit == 69)
-            return (69);
         while (sfRenderWindow_pollEvent(bin->Boss, &bin->event)) {
             fermer_boss(bin);
         }

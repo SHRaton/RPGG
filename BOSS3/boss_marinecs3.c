@@ -58,7 +58,9 @@ void clock_anim_boulemarine(struct bin *bin)
     bin->deplacements.y > 450)) {
         bin->rect_flamme.left = 0;
         bin->rect_vie.width -= 40;
-        bin->rect_vie_crocodile.width += 10;
+        if (bin->rect_vie_crocodile.width < 437) {
+            bin->rect_vie_crocodile.width += 20;
+        }
         bin->nb_attack = 0;
         bin->rect_sol.left = 0;
         bin->lance_feu = 0;
@@ -77,7 +79,9 @@ void clock_anim_boulemarine(struct bin *bin)
             bin->pos_boule2.y < bin->deplacements.y + 400)) {
                 bin->rect_flamme.left = 0;
                 bin->rect_vie.width -= 40;
-                bin->rect_vie_crocodile.width += 10;
+                if (bin->rect_vie_crocodile.width < 437) {
+                    bin->rect_vie_crocodile.width += 20;
+                }
                 bin->nb_attack = 0;
                 bin->rect_sol.left = 0;
                 bin->lance_feu = 0;
@@ -127,8 +131,8 @@ void lance_boulemarine(struct bin *bin)
 {
     if (sfTime_asSeconds(sfClock_getElapsedTime(bin->clock_akainu)) > 15) {
         bin->rect_flamme.left = 0;
-        if (bin->rect_vie.width <= 417) {
-            bin->rect_vie.width += 40;
+        if (bin->rect_vie.width <= 377) {
+            bin->rect_vie.width += 80;
         }
         bin->nb_attack = 0;
         bin->rect_sol.left = 0;
@@ -164,7 +168,7 @@ void clock_deplacements_crocomarine(struct bin *bin)
         }if (bin->rect_vie_crocodile.width <= 0) {
             bin->rect_vie_crocodile.width = 0;
             bin->mort = 1; bin->pos_crocodile.y = 700;
-            bin->crocodile = bin->wukong_mort_c;
+            bin->crocodile = bin->akainu_mort;
             sfSprite_setScale(bin->crocodile, (sfVector2f) {6, 6});
         }if (bin->rect_vie.width <= 0) {
             game_over_akainu(bin);

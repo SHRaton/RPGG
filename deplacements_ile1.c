@@ -40,8 +40,7 @@ int droite_ile(struct bin *bin)
 {
     bin->couleur = sfImage_getPixel(bin->screenshot, bin->x + 10, bin->y);
     if (bin->event.type == sfEvtKeyPressed &&
-    sfKeyboard_isKeyPressed(sfKeyRight) ||
-    sfKeyboard_isKeyPressed(sfKeyD)) {
+    sfKeyboard_isKeyPressed(sfKeyRight)) {
         if (bin->couleur.r == 255 && bin->couleur.g == 0 &&
         bin->couleur.b == 255) {
             stop_obstacle(bin); return (0);
@@ -65,8 +64,7 @@ int gauche_ile(struct bin *bin)
 {
     bin->couleur = sfImage_getPixel(bin->screenshot, bin->x - 10, bin->y);
     if (bin->event.type == sfEvtKeyPressed &&
-    sfKeyboard_isKeyPressed(sfKeyLeft) ||
-    sfKeyboard_isKeyPressed(sfKeyQ)) {
+    sfKeyboard_isKeyPressed(sfKeyLeft)) {
         if (bin->couleur.r == 255 && bin->couleur.g == 0 &&
         bin->couleur.b == 255) {
             stop_obstacle(bin); return (0);
@@ -90,8 +88,7 @@ int haut_ile(struct bin *bin)
 {
     bin->couleur = sfImage_getPixel(bin->screenshot, bin->x, bin->y - 10);
     if (bin->event.type == sfEvtKeyPressed &&
-    sfKeyboard_isKeyPressed(sfKeyUp) ||
-        sfKeyboard_isKeyPressed(sfKeyZ)) {
+    sfKeyboard_isKeyPressed(sfKeyUp)) {
         if (bin->couleur.r == 255 && bin->couleur.g == 0 &&
         bin->couleur.b == 255) {
             stop_obstacle(bin);
@@ -115,8 +112,7 @@ int bas_ile(struct bin *bin)
 {
     bin->couleur = sfImage_getPixel(bin->screenshot, bin->x, bin->y + 10);
     if (bin->event.type == sfEvtKeyPressed &&
-    sfKeyboard_isKeyPressed(sfKeyDown) ||
-    sfKeyboard_isKeyPressed(sfKeyS)) {
+    sfKeyboard_isKeyPressed(sfKeyDown)) {
         if (bin->couleur.r == 255 && bin->couleur.g == 0 &&
         bin->couleur.b == 255) {
             stop_obstacle(bin);

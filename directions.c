@@ -35,6 +35,19 @@ int directions(struct bin *bin)
     bin->coo_y <= -3800 && bin->coo_y >= -4200 && bin->dialogue_coffre == 0) {
         coffre(bin);
     }
+    if (bin->coo_x <= -1300 && bin->coo_x >= -1400 &&
+    bin->coo_y <= -3800 && bin->coo_y >= -4200 && bin->nb_ile == 2) {
+        ace2(bin);
+    }
+    if (bin->coo_x <= -1300 && bin->coo_x >= -1400 &&
+    bin->coo_y <= -3800 && bin->coo_y >= -4200 && bin->nb_ile == 3) {
+        ace3(bin);
+    }
+    if (bin->coo_x <= -1300 && bin->coo_x >= -1400 &&
+    bin->coo_y <= -3800 && bin->coo_y >= -4200 && bin->nb_ile == 4) {
+        ace4(bin);
+        cinematique(bin);
+    }
     tab(bin);
     inventory(bin);
     hud_pause(bin);
