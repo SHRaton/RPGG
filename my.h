@@ -299,7 +299,7 @@
         int coffre3;
         int coffre4;
         int coffre5;
-
+        sfSprite *menu4;
         sfSprite *coffre_berry;
     };
 

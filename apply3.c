@@ -167,4 +167,5 @@ void applycrash4(struct bin *bin)
     bin->coffre4 = 0;
     bin->coffre5 = 0;
     bin->coffre_berry = cat("img/coffre_berry.png");
+    bin->menu4 = cat("img/menu_resume.png");
 }

@@ -126,8 +126,8 @@ int fermer_menu(struct bin *bin)
         sfRenderWindow_close(bin->Menu);
         start_funtion(bin);
     }
-    if (bin->mouse.x > 600 && bin->mouse.x < 1350 &&
-        bin->mouse.y > 875 && bin->mouse.y < 1080 &&
+    if (bin->mouse.x > 24 && bin->mouse.x < 140 &&
+        bin->mouse.y > 915 && bin->mouse.y < 1020 &&
         bin->event.type == sfEvtMouseButtonPressed &&
         bin->event.mouseButton.button == sfMouseLeft) {
         if (recup_log(bin) == 0) {
@@ -160,6 +160,9 @@ int affichage_menu(struct bin *bin)
     } else if (bin->mouse.x > 1720 && bin->mouse.x < 1920 &&
     bin->mouse.y > 880 && bin->mouse.y < 1080) {
         bin->menu = bin->menu2;
+    } else if (bin->mouse.x > 24 && bin->mouse.x < 140 &&
+    bin->mouse.y > 915 && bin->mouse.y < 1020) {
+        bin->menu = bin->menu4;
     } else {
         bin->menu = bin->menu3;
     }
